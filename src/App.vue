@@ -44,7 +44,11 @@
                                 <td>{{item.reportCount}}</td>
                                 <td>{{item.paperReportCount}}</td>
                                 <td>{{item.paperReportCommentsCount}}</td>
-                                <td>{{item.isOver}}</td>
+                                <td>
+                                    <div class="checkbox-wrapper">
+                                        <check-box v-model="item.isOver" />
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                         <!--<tfoot>
@@ -127,6 +131,13 @@
                     border-collapse: collapse;
                     border-radius: 7px;
                     border: 1px solid #DBDBDB;
+                    .checkbox-wrapper {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
                     th, td {
                         border: 1px solid #DBDBDB;
                         padding: 16px 7.5px;
@@ -149,10 +160,12 @@
 
 <script>
 import SideNavigation from '@/components/SideNavigation.vue'
+import CheckBox from '@/components/CheckBox.vue'
 
 export default {
 	components: {
-        SideNavigation
+        SideNavigation,
+        CheckBox,
     },
     data() {
         return {
@@ -175,7 +188,7 @@ export default {
                     reportCount: 0,
                     paperReportCount: 1,
                     paperReportCommentsCount: 1,
-                    isOver: true,
+                    isOver: false,
                 },
             ]
         }
